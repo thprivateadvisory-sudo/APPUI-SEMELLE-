@@ -39,16 +39,49 @@
   </div>
 </section>
 
+<section class="guarantee-section">
+  <div class="guarantee-inner">
+    <div class="section-head">
+      <h2>{{ section.settings.guarantee_heading }}</h2>
+      <p>{{ section.settings.guarantee_text }}</p>
+    </div>
+    <div class="guarantee-grid">
+      <div class="guarantee-card">
+        <div class="guarantee-icon">↩</div>
+        <h3>45 jours satisfait ou remboursé</h3>
+        <p>Portez-les, testez-les vraiment. Si vous n'êtes pas convaincus : retour gratuit, remboursement complet. Aucune question posée.</p>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🚚</div>
+        <h3>Livraison offerte dès 40€</h3>
+        <p>Expédié depuis la France en 48h ouvrées. Colis fin, livré directement dans votre boîte aux lettres.</p>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🔒</div>
+        <h3>Paiement 100% sécurisé</h3>
+        <p>CB, PayPal, Apple Pay — au choix. Vos données bancaires ne transitent jamais sur nos serveurs.</p>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🏆</div>
+        <h3>Qualité validée</h3>
+        <p>Recommandée par des kinésithérapeutes et podologues. Durée de vie minimum 18 mois.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% schema %}
 {
   "name": "Panneau éditorial",
   "settings": [
-    { "type": "text",     "id": "heading",      "label": "Titre",     "default": "Marcher ne devrait pas faire mal." },
-    { "type": "textarea", "id": "text",         "label": "Texte",     "default": "Pas de rendez-vous chez le podologue à attendre trois semaines. Vous commandez en ligne, vous glissez la semelle dans la chaussure, et vous marchez différemment dès le premier jour." },
-    { "type": "text",     "id": "button_label", "label": "Bouton",    "default": "Voir la gamme" },
-    { "type": "url",      "id": "button_link",  "label": "Lien du bouton" },
-    { "type": "image_picker", "id": "image_1",  "label": "Image 1" },
-    { "type": "image_picker", "id": "image_2",  "label": "Image 2 (optionnel)" }
+    { "type": "text",         "id": "heading",           "label": "Titre",             "default": "Marcher ne devrait pas faire mal." },
+    { "type": "textarea",     "id": "text",              "label": "Texte",             "default": "Pas de rendez-vous chez le podologue à attendre trois semaines. Vous commandez en ligne, vous glissez la semelle dans la chaussure, et vous marchez différemment dès le premier jour." },
+    { "type": "text",         "id": "button_label",      "label": "Bouton",            "default": "Voir la gamme" },
+    { "type": "url",          "id": "button_link",       "label": "Lien du bouton" },
+    { "type": "image_picker", "id": "image_1",           "label": "Image 1" },
+    { "type": "image_picker", "id": "image_2",           "label": "Image 2 (optionnel)" },
+    { "type": "text",         "id": "guarantee_heading", "label": "Titre garanties",   "default": "Zéro risque pour vous" },
+    { "type": "textarea",     "id": "guarantee_text",    "label": "Texte garanties",   "default": "On est tellement confiants dans nos semelles qu'on vous offre 45 jours pour changer d'avis — sans justification, sans paperasse." }
   ],
   "presets": [ { "name": "Panneau éditorial" } ]
 }
