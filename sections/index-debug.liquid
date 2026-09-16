@@ -1,8 +1,204 @@
-<div style="padding: 80px 24px; text-align: center; font-family: sans-serif;">
-  <h1 style="font-size: 2rem; margin-bottom: 16px;">SYNC TEST ✓</h1>
-  <p style="color: #666;">Si tu vois ce texte, le fichier JSON du template n'est pas mis à jour par Shopify.</p>
-</div>
+{%- comment -%} Homepage complète — contourne le bug de sync templates/index.json {%- endcomment -%}
+
+<!-- ======= HERO ======= -->
+<section class="hero">
+  <div class="hero-bg{% if section.settings.hero_image == blank %} hero-bg--gradient{% endif %}">
+    {% unless section.settings.hero_image == blank %}
+      <img
+        src="{{ section.settings.hero_image | image_url: width: 1600 }}"
+        alt=""
+        role="presentation"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {% endunless %}
+  </div>
+
+  <div class="hero-content">
+    {% if section.settings.hero_rating != blank %}
+      <div class="hero-rating">
+        <span class="stars-inline">★★★★★</span>
+        {{ section.settings.hero_rating }}
+      </div>
+    {% endif %}
+
+    <h1>{{ section.settings.hero_heading }}</h1>
+
+    {% if section.settings.hero_text != blank %}
+      <p class="lede">{{ section.settings.hero_text }}</p>
+    {% endif %}
+
+    {% if section.settings.hero_button != blank %}
+      <a href="{{ section.settings.hero_link }}" class="btn btn--hero">
+        {{ section.settings.hero_button }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="hero-stats">
+    <div><b>{{ section.settings.stat1_val }}</b> {{ section.settings.stat1_lbl }}</div>
+    <div><b>{{ section.settings.stat2_val }}</b> {{ section.settings.stat2_lbl }}</div>
+    <div><b>{{ section.settings.stat3_val }}</b> {{ section.settings.stat3_lbl }}</div>
+  </div>
+</section>
+
+<!-- ======= FEATURES ======= -->
+{%- assign features = section.blocks | where: 'type', 'feature' -%}
+{% if features.size > 0 %}
+  <section class="features">
+    <div class="features-grid">
+      {% for block in features %}
+        <div class="feature-card" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}
+            <div class="feature-icon">{{ block.settings.icon }}</div>
+          {% endif %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+<!-- ======= PANNEAU ÉDITORIAL ======= -->
+{% if section.settings.panel_heading != blank %}
+  <section class="panel-dark">
+    <div class="inner">
+      <div class="panel-body">
+        <h2>{{ section.settings.panel_heading }}</h2>
+        {% if section.settings.panel_text != blank %}
+          <p>{{ section.settings.panel_text }}</p>
+        {% endif %}
+        {% if section.settings.panel_button != blank %}
+          <a href="{{ section.settings.panel_link }}" class="btn">{{ section.settings.panel_button }}</a>
+        {% endif %}
+      </div>
+      <div class="panel-images">
+        {% if section.settings.panel_image != blank %}
+          <div class="panel-image">
+            <img src="{{ section.settings.panel_image | image_url: width: 900 }}" alt="" loading="lazy">
+          </div>
+        {% else %}
+          <div class="panel-image panel-image--placeholder">
+            <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="120" opacity=".5">
+              <path d="M20 100 C40 60 60 40 100 40 C140 40 160 70 175 100" stroke="#F8F5F0" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="100" cy="40" r="8" fill="#F8F5F0"/>
+            </svg>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<!-- ======= PRODUITS ======= -->
+<section class="products" id="produits">
+  <div class="section-head">
+    <h2>{{ section.settings.products_heading }}</h2>
+    {% if section.settings.products_text != blank %}
+      <p>{{ section.settings.products_text }}</p>
+    {% endif %}
+  </div>
+  <div class="product-grid">
+    {%- if section.settings.featured_collection != blank -%}
+      {%- assign col = section.settings.featured_collection -%}
+    {%- else -%}
+      {%- assign col = collections['all'] -%}
+    {%- endif -%}
+    {% for product in col.products limit: 4 %}
+      {% render 'product-card', product: product %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ======= TÉMOIGNAGES ======= -->
+{%- assign testimonials = section.blocks | where: 'type', 'testimonial' -%}
+{% if testimonials.size > 0 %}
+  <section class="testimonials">
+    <div class="section-head">
+      <h2>{{ section.settings.testimonials_heading }}</h2>
+    </div>
+    <div class="testimonial-grid">
+      {% for block in testimonials %}
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+          <div class="star-badge">
+            {% for i in (1..block.settings.rating) %}★{% endfor %}
+            &nbsp;{{ block.settings.rating }}/5
+          </div>
+          <p>{{ block.settings.quote }}</p>
+          <div class="who">— {{ block.settings.author }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
 
 {% schema %}
-{ "name": "Debug index", "settings": [] }
+{
+  "name": "Page d'accueil",
+  "settings": [
+    { "type": "header", "content": "Héro" },
+    { "type": "image_picker", "id": "hero_image",   "label": "Image de fond" },
+    { "type": "text",         "id": "hero_rating",  "label": "Note",    "default": "4.8/5 · 2 300 avis" },
+    { "type": "text",         "id": "hero_heading", "label": "Titre",   "default": "Vos pieds portent tout le poids. Il est temps de les soutenir." },
+    { "type": "textarea",     "id": "hero_text",    "label": "Texte",   "default": "Des semelles de confort et de posture, glissées dans vos chaussures en dix secondes." },
+    { "type": "text",         "id": "hero_button",  "label": "Bouton",  "default": "Découvrir les semelles" },
+    { "type": "url",          "id": "hero_link",    "label": "Lien du bouton" },
+    { "type": "text",         "id": "stat1_val",    "label": "Stat 1 — valeur",  "default": "4.8/5" },
+    { "type": "text",         "id": "stat1_lbl",    "label": "Stat 1 — libellé", "default": "2 300 avis" },
+    { "type": "text",         "id": "stat2_val",    "label": "Stat 2 — valeur",  "default": "48h" },
+    { "type": "text",         "id": "stat2_lbl",    "label": "Stat 2 — libellé", "default": "Livraison" },
+    { "type": "text",         "id": "stat3_val",    "label": "Stat 3 — valeur",  "default": "45j" },
+    { "type": "text",         "id": "stat3_lbl",    "label": "Stat 3 — libellé", "default": "Essai chez vous" },
+
+    { "type": "header", "content": "Panneau éditorial" },
+    { "type": "text",         "id": "panel_heading", "label": "Titre",  "default": "Marcher ne devrait pas faire mal." },
+    { "type": "textarea",     "id": "panel_text",    "label": "Texte",  "default": "Pas de rendez-vous chez le podologue à attendre trois semaines. Vous commandez en ligne, vous glissez la semelle dans la chaussure, et vous marchez différemment dès le premier jour." },
+    { "type": "text",         "id": "panel_button",  "label": "Bouton", "default": "Voir la gamme" },
+    { "type": "url",          "id": "panel_link",    "label": "Lien du bouton" },
+    { "type": "image_picker", "id": "panel_image",   "label": "Image" },
+
+    { "type": "header", "content": "Produits" },
+    { "type": "text",       "id": "products_heading",    "label": "Titre",      "default": "Deux semelles, une seule promesse" },
+    { "type": "textarea",   "id": "products_text",       "label": "Texte",      "default": "Une base de confort pour toute l'année, et une version chauffante pour les mois froids." },
+    { "type": "collection", "id": "featured_collection", "label": "Collection à afficher" },
+
+    { "type": "header", "content": "Témoignages" },
+    { "type": "text", "id": "testimonials_heading", "label": "Titre", "default": "Ils ont retrouvé leur confort" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Fonctionnalité",
+      "settings": [
+        { "type": "text",     "id": "icon",  "label": "Icône (emoji)" },
+        { "type": "text",     "id": "title", "label": "Titre" },
+        { "type": "textarea", "id": "text",  "label": "Texte" }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Témoignage",
+      "settings": [
+        { "type": "range",    "id": "rating", "label": "Note",     "min": 1, "max": 5, "default": 5 },
+        { "type": "textarea", "id": "quote",  "label": "Citation" },
+        { "type": "text",     "id": "author", "label": "Auteur" }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      { "type": "feature", "settings": { "title": "Dans toutes vos chaussures", "text": "Une découpe simple aux ciseaux pour s'adapter à n'importe quelle pointure." } },
+      { "type": "feature", "settings": { "title": "Toute l'année", "text": "Confort au quotidien en toute saison, avec une gamme chauffante pour l'hiver." } },
+      { "type": "feature", "settings": { "title": "Livré en 48h", "text": "Expédié depuis la France, dans un colis fin qui passe partout." } },
+      { "type": "testimonial", "settings": { "rating": 5, "quote": "Je travaille debout huit heures par jour, mes pieds ne me font plus mal en fin de service.", "author": "Nadia, aide-soignante" } },
+      { "type": "testimonial", "settings": { "rating": 5, "quote": "La version chauffante a changé mes trajets à vélo cet hiver. Je les recommande à tous.", "author": "Karim, livreur" } },
+      { "type": "testimonial", "settings": { "rating": 5, "quote": "Installation en deux minutes, découpées à ma pointure sans effort. Parfait.", "author": "Julie, infirmière" } },
+      { "type": "testimonial", "settings": { "rating": 4, "quote": "Enfin une semelle qui ne glisse pas et qui absorbe vraiment les chocs.", "author": "Thomas, commercial" } }
+    ]
+  },
+  "presets": [{ "name": "Page d'accueil" }]
+}
 {% endschema %}
