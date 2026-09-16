@@ -751,6 +751,82 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.6; margin: 0;
 }
 
+/* ── FAQ accordion ───────────────────────────────────── */
+.faq-section { padding: 72px 24px; }
+.faq-inner { max-width: 780px; margin: 0 auto; }
+.faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-item:first-child { border-top: 1px solid var(--line); }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem; font-weight: 600;
+  color: var(--ink); text-align: left; gap: 16px;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-icon {
+  font-size: 1.4rem; font-weight: 300; flex-shrink: 0;
+  color: var(--accent); line-height: 1; width: 24px; text-align: center;
+  transition: transform .2s;
+}
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { padding: 0 0 20px; }
+.faq-a p {
+  margin: 0; font-size: .93rem; line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* ── Comparison table ────────────────────────────────── */
+.comparison-section { padding: 72px 24px; background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.comparison-inner { max-width: 900px; margin: 0 auto; }
+.comparison-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 40px; }
+.comparison-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .92rem;
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.comparison-table thead tr {
+  background: var(--bg);
+}
+.comparison-table th {
+  font-family: "Fraunces", serif;
+  font-weight: 600; font-size: .95rem;
+}
+.comparison-table tbody tr:hover { background: var(--bg); }
+.comparison-table .col-appui {
+  background: var(--accent-light);
+  font-weight: 600;
+}
+.comparison-table thead .col-appui { border-radius: 8px 8px 0 0; }
+.comparison-table .col-alt { color: var(--ink-soft); }
+.comparison-table .check::before {
+  content: "✓ ";
+  color: var(--accent);
+  font-weight: 700;
+}
+.appui-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-size: .82rem;
+  font-weight: 700;
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: .03em;
+}
+.comparison-table small { display: block; font-size: .78rem; color: var(--ink-soft); font-weight: 400; }
+
 /* ── Topbar fade animation ───────────────────────────── */
 .topbar-text {
   display: inline-block;

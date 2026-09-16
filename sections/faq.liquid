@@ -1,0 +1,113 @@
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="section-head">
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}
+        <p>{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <div class="faq-item" {{ block.shopify_attributes }}>
+          <button class="faq-q" aria-expanded="false" type="button">
+            {{ block.settings.question }}
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>{{ block.settings.answer }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item   = this.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var open   = this.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        el.querySelector('.faq-a').hidden = true;
+        el.querySelector('.faq-icon').textContent = '+';
+      });
+      if (!open) {
+        this.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+        this.querySelector('.faq-icon').textContent = '−';
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text",     "id": "heading", "label": "Titre",      "default": "Questions fréquentes" },
+    { "type": "textarea", "id": "text",    "label": "Sous-titre", "default": "Tout ce que vous voulez savoir avant de commander." }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Question",
+      "settings": [
+        { "type": "text",     "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer",   "label": "Réponse" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "question": "Dans quelles chaussures puis-je mettre les semelles Appui ?",
+            "answer": "Dans toutes vos chaussures : baskets, chaussures de ville, boots, chaussures de travail. Il suffit de les découper à votre pointure avec des ciseaux ordinaires — un guide de coupe est inclus."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "Combien de temps durent les semelles ?",
+            "answer": "Minimum 18 mois avec une utilisation quotidienne. La mousse mémoire de forme et la semelle orthopédique sont conçues pour conserver leur soutien sur le long terme."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "Comment fonctionne la garantie 45 jours ?",
+            "answer": "Vous avez 45 jours pour tester les semelles dans vos vraies conditions — au bureau, à la maison, en sport. Si vous n'êtes pas convaincus, contactez-nous : retour gratuit et remboursement complet, sans poser de questions."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "La livraison est-elle vraiment rapide ?",
+            "answer": "Oui. Toutes les commandes sont expédiées depuis la France en 24-48h ouvrées. Le colis est fin et léger — il passe dans la boîte aux lettres."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "Quelle différence avec une semelle de pharmacie ?",
+            "answer": "Les semelles de pharmacie sont génériques et faites pour durer quelques semaines. Appui combine un soutien de voûte plantaire précis, une mousse haute densité et une conception validée par des kinésithérapeutes — pour un confort qui dure."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "Les semelles chauffantes, ça marche vraiment ?",
+            "answer": "Oui. La version chauffante dispose d'éléments chauffants ultra-plats alimentés par batterie rechargeable USB. Autonomie de 4 à 8h selon le niveau de chaleur. Parfaite pour les activités outdoor et les métiers en extérieur."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

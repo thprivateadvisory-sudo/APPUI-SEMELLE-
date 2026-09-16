@@ -1,0 +1,90 @@
+<section class="comparison-section">
+  <div class="comparison-inner">
+    <div class="section-head">
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}
+        <p>{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    <div class="comparison-wrap">
+      <table class="comparison-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Critère</th>
+            <th scope="col" class="col-appui">
+              <span class="appui-badge">Appui</span>
+            </th>
+            <th scope="col" class="col-alt">Semelle pharmacie</th>
+            <th scope="col" class="col-alt">Podologue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Prix</td>
+            <td class="col-appui check">Dès 29€</td>
+            <td>8–15€ <small>(à remplacer souvent)</small></td>
+            <td>80–200€</td>
+          </tr>
+          <tr>
+            <td>Délai avant résultat</td>
+            <td class="col-appui check">Dès le 1er jour</td>
+            <td>Quelques jours</td>
+            <td>3–6 semaines (RDV)</td>
+          </tr>
+          <tr>
+            <td>Soutien de la voûte plantaire</td>
+            <td class="col-appui check">Oui — haute densité</td>
+            <td>Partiel</td>
+            <td>Oui — sur mesure</td>
+          </tr>
+          <tr>
+            <td>Compatible toutes chaussures</td>
+            <td class="col-appui check">Oui — découpe incluse</td>
+            <td>Oui</td>
+            <td>Parfois non</td>
+          </tr>
+          <tr>
+            <td>Durée de vie</td>
+            <td class="col-appui check">+18 mois</td>
+            <td>2–4 mois</td>
+            <td>+12 mois</td>
+          </tr>
+          <tr>
+            <td>Validée par des kinés</td>
+            <td class="col-appui check">Oui</td>
+            <td>Non</td>
+            <td>Oui</td>
+          </tr>
+          <tr>
+            <td>Essai sans risque</td>
+            <td class="col-appui check">45 jours remboursé</td>
+            <td>Non</td>
+            <td>Non</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    {% if section.settings.button_label != blank %}
+      <div style="text-align:center; margin-top:40px;">
+        <a href="{{ section.settings.button_link }}" class="btn btn--hero">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tableau comparatif",
+  "settings": [
+    { "type": "text",     "id": "heading",      "label": "Titre",      "default": "Pourquoi choisir Appui ?" },
+    { "type": "textarea", "id": "text",         "label": "Sous-titre", "default": "Une semelle qui tient ses promesses, au bon prix, sans attendre." },
+    { "type": "text",     "id": "button_label", "label": "Bouton CTA", "default": "Essayer Appui — 45 jours sans risque" },
+    { "type": "url",      "id": "button_link",  "label": "Lien bouton" }
+  ],
+  "presets": [ { "name": "Tableau comparatif" } ]
+}
+{% endschema %}
