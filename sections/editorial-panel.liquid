@@ -18,11 +18,12 @@
           >
         </div>
       {% else %}
-        <div class="panel-image panel-image--placeholder">
-          <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="120" opacity=".5">
-            <path d="M20 100 C40 60 60 40 100 40 C140 40 160 70 175 100" stroke="#F8F5F0" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <circle cx="100" cy="40" r="8" fill="#F8F5F0"/>
-          </svg>
+        <div class="panel-image">
+          <img
+            src="{{ 'editorial-lifestyle.png' | asset_url }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+          >
         </div>
       {% endif %}
 
