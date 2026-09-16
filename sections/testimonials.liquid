@@ -2,14 +2,16 @@
   <div class="section-head">
     <h2>{{ section.settings.heading }}</h2>
   </div>
-  <div class="testimonial-scroll">
+
+  <div class="testimonial-grid">
     {% for block in section.blocks %}
-      <div class="testimonial-card">
-        <span class="stars">
-          {% for i in (1..5) %}{% if i <= block.settings.rating %}★{% else %}☆{% endif %}{% endfor %}
-        </span>
+      <div class="testimonial-card" {{ block.shopify_attributes }}>
+        <div class="star-badge">
+          {% for i in (1..block.settings.rating) %}★{% endfor %}
+          &nbsp;{{ block.settings.rating }}/5
+        </div>
         <p>{{ block.settings.quote }}</p>
-        <div class="who">{{ block.settings.author }}</div>
+        <div class="who">— {{ block.settings.author }}</div>
       </div>
     {% endfor %}
   </div>
@@ -26,17 +28,18 @@
       "type": "testimonial",
       "name": "Témoignage",
       "settings": [
-        { "type": "range", "id": "rating", "label": "Note", "min": 1, "max": 5, "default": 5 },
-        { "type": "textarea", "id": "quote", "label": "Citation" },
-        { "type": "text", "id": "author", "label": "Auteur" }
+        { "type": "range",    "id": "rating", "label": "Note",     "min": 1, "max": 5, "default": 5 },
+        { "type": "textarea", "id": "quote",  "label": "Citation" },
+        { "type": "text",     "id": "author", "label": "Auteur" }
       ]
     }
   ],
   "default": {
     "blocks": [
       { "type": "testimonial", "settings": { "rating": 5, "quote": "Je travaille debout huit heures par jour, mes pieds ne me font plus mal en fin de service.", "author": "Nadia, aide-soignante" } },
-      { "type": "testimonial", "settings": { "rating": 5, "quote": "La version chauffante a changé mes trajets à vélo cet hiver.", "author": "Karim, livreur" } },
-      { "type": "testimonial", "settings": { "rating": 4, "quote": "Installation en deux minutes, découpées à ma pointure sans effort.", "author": "Julie, infirmière" } }
+      { "type": "testimonial", "settings": { "rating": 5, "quote": "La version chauffante a changé mes trajets à vélo cet hiver. Je les recommande à tous.", "author": "Karim, livreur" } },
+      { "type": "testimonial", "settings": { "rating": 5, "quote": "Installation en deux minutes, découpées à ma pointure sans effort. Parfait.", "author": "Julie, infirmière" } },
+      { "type": "testimonial", "settings": { "rating": 4, "quote": "Enfin une semelle qui ne glisse pas dans la chaussure et qui absorbe vraiment les chocs.", "author": "Thomas, commercial" } }
     ]
   },
   "presets": [ { "name": "Témoignages" } ]
