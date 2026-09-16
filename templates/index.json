@@ -1,12 +1,183 @@
 {
   "sections": {
-    "hero":              { "type": "hero" },
-    "feature-grid":      { "type": "feature-grid" },
-    "editorial-panel":   { "type": "editorial-panel" },
-    "featured-products": { "type": "featured-products" },
-    "guarantee":         { "type": "guarantee" },
-    "social-proof":      { "type": "social-proof" },
-    "testimonials":      { "type": "testimonials" }
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "rating_text": "4.8/5 · 2 300 avis",
+        "heading": "Vos pieds portent tout le poids. Il est temps de les soutenir.",
+        "text": "Des semelles de confort et de posture, glissées dans vos chaussures en dix secondes.",
+        "button_label": "Découvrir les semelles",
+        "button_link": "/collections/all",
+        "stat_1_value": "4.8/5",
+        "stat_1_label": "2 300 avis",
+        "stat_2_value": "48h",
+        "stat_2_label": "Livraison",
+        "stat_3_value": "45j",
+        "stat_3_label": "Essai chez vous"
+      }
+    },
+    "feature-grid": {
+      "type": "feature-grid",
+      "blocks": {
+        "feat-1": {
+          "type": "feature",
+          "settings": {
+            "icon": "👟",
+            "title": "Dans toutes vos chaussures",
+            "text": "Une découpe simple aux ciseaux pour s'adapter à n'importe quelle pointure."
+          }
+        },
+        "feat-2": {
+          "type": "feature",
+          "settings": {
+            "icon": "🌡️",
+            "title": "Toute l'année",
+            "text": "Confort au quotidien en toute saison, avec une gamme chauffante pour l'hiver."
+          }
+        },
+        "feat-3": {
+          "type": "feature",
+          "settings": {
+            "icon": "📦",
+            "title": "Livré en 48h",
+            "text": "Expédié depuis la France, dans un colis fin qui passe partout."
+          }
+        },
+        "feat-4": {
+          "type": "feature",
+          "settings": {
+            "icon": "🏆",
+            "title": "Validée par des kinés",
+            "text": "Recommandée par des kinésithérapeutes et podologues pour un soutien quotidien."
+          }
+        }
+      },
+      "block_order": ["feat-1", "feat-2", "feat-3", "feat-4"]
+    },
+    "editorial-panel": {
+      "type": "editorial-panel",
+      "settings": {
+        "heading": "Marcher ne devrait pas faire mal.",
+        "text": "Pas de rendez-vous chez le podologue à attendre trois semaines. Vous commandez en ligne, vous glissez la semelle dans la chaussure, et vous marchez différemment dès le premier jour.",
+        "button_label": "Voir la gamme",
+        "button_link": "/collections/all"
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "Nos semelles",
+        "subheading": "Choisissez selon votre usage"
+      }
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "heading": "Zéro risque pour vous",
+        "text": "On est tellement confiants dans nos semelles qu'on vous offre 45 jours pour changer d'avis — sans justification, sans paperasse."
+      },
+      "blocks": {
+        "g-1": {
+          "type": "item",
+          "settings": {
+            "icon": "↩",
+            "title": "45 jours satisfait ou remboursé",
+            "text": "Portez-les, testez-les vraiment. Si vous n'êtes pas convaincus : retour gratuit, remboursement complet. Aucune question posée."
+          }
+        },
+        "g-2": {
+          "type": "item",
+          "settings": {
+            "icon": "🚚",
+            "title": "Livraison offerte dès 40€",
+            "text": "Expédié depuis la France en 48h ouvrées. Colis fin, livré directement dans votre boîte aux lettres."
+          }
+        },
+        "g-3": {
+          "type": "item",
+          "settings": {
+            "icon": "🔒",
+            "title": "Paiement 100% sécurisé",
+            "text": "CB, PayPal, Apple Pay — au choix. Vos données bancaires ne transitent jamais sur nos serveurs."
+          }
+        },
+        "g-4": {
+          "type": "item",
+          "settings": {
+            "icon": "🏆",
+            "title": "Qualité validée",
+            "text": "Recommandée par des kinésithérapeutes et podologues. Durée de vie minimum 18 mois."
+          }
+        }
+      },
+      "block_order": ["g-1", "g-2", "g-3", "g-4"]
+    },
+    "social-proof": {
+      "type": "social-proof",
+      "settings": {
+        "heading": "Ils l'ont adopté"
+      },
+      "blocks": {
+        "r-1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Je pensais vraiment que c'était exagéré. Et puis j'ai essayé. Mes pieds ne me font plus mal après ma journée de travail.",
+            "author": "Marine, 34 ans"
+          }
+        },
+        "r-2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "La livraison est hyper rapide et le produit tient toutes ses promesses. Je les ai glissées dans mes chaussures de running.",
+            "author": "Lucas, sportif"
+          }
+        }
+      },
+      "block_order": ["r-1", "r-2"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "Ils ont retrouvé leur confort"
+      },
+      "blocks": {
+        "t-1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Je travaille debout huit heures par jour, mes pieds ne me font plus mal en fin de service. Je les recommande à toutes mes collègues.",
+            "author": "Nadia, aide-soignante"
+          }
+        },
+        "t-2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "La version chauffante a changé mes trajets à vélo cet hiver. Je les recommande à tous.",
+            "author": "Karim, livreur"
+          }
+        },
+        "t-3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Installation en deux minutes, découpées à ma pointure sans effort. Parfait.",
+            "author": "Julie, infirmière"
+          }
+        },
+        "t-4": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 4,
+            "quote": "Enfin une semelle qui ne glisse pas dans la chaussure et qui absorbe vraiment les chocs.",
+            "author": "Thomas, commercial"
+          }
+        }
+      },
+      "block_order": ["t-1", "t-2", "t-3", "t-4"]
+    }
   },
   "order": ["hero", "feature-grid", "editorial-panel", "featured-products", "guarantee", "social-proof", "testimonials"]
 }

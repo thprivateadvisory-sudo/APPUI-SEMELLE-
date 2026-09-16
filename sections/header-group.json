@@ -3,7 +3,12 @@
   "type": "header",
   "sections": {
     "announcement-bar": {
-      "type": "announcement-bar"
+      "type": "announcement-bar",
+      "settings": {
+        "message_1": "🚚 Livraison offerte partout en France · Expédié en 48h",
+        "message_2": "↩ Satisfait ou remboursé — 45 jours d'essai sans risque",
+        "message_3": "⚡ Commandez avant 16h → expédition aujourd'hui"
+      }
     },
     "header": {
       "type": "header"

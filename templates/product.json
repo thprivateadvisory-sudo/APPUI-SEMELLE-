@@ -1,8 +1,91 @@
 {
   "sections": {
-    "main":      { "type": "main-product" },
-    "guarantee": { "type": "guarantee" },
-    "testimonials": { "type": "testimonials" }
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "rating_score": "4.8",
+        "rating_count": "2 347",
+        "benefit_1": "✓ Soulage les douleurs en 7 jours ou remboursé",
+        "benefit_2": "✓ Compatible toutes chaussures — découpe à votre pointure",
+        "benefit_3": "✓ Validée par des kinésithérapeutes",
+        "benefit_4": "✓ Mémoire de forme longue durée (18 mois min.)"
+      }
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "heading": "Zéro risque pour vous",
+        "text": "On est tellement confiants dans nos semelles qu'on vous offre 45 jours pour changer d'avis — sans justification, sans paperasse."
+      },
+      "blocks": {
+        "g-1": {
+          "type": "item",
+          "settings": {
+            "icon": "↩",
+            "title": "45 jours satisfait ou remboursé",
+            "text": "Portez-les, testez-les vraiment. Si vous n'êtes pas convaincus : retour gratuit, remboursement complet. Aucune question posée."
+          }
+        },
+        "g-2": {
+          "type": "item",
+          "settings": {
+            "icon": "🚚",
+            "title": "Livraison offerte dès 40€",
+            "text": "Expédié depuis la France en 48h ouvrées. Colis fin, livré directement dans votre boîte aux lettres."
+          }
+        },
+        "g-3": {
+          "type": "item",
+          "settings": {
+            "icon": "🔒",
+            "title": "Paiement 100% sécurisé",
+            "text": "CB, PayPal, Apple Pay — au choix. Vos données bancaires ne transitent jamais sur nos serveurs."
+          }
+        },
+        "g-4": {
+          "type": "item",
+          "settings": {
+            "icon": "🏆",
+            "title": "Qualité validée",
+            "text": "Recommandée par des kinésithérapeutes et podologues. Durée de vie minimum 18 mois."
+          }
+        }
+      },
+      "block_order": ["g-1", "g-2", "g-3", "g-4"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "Ils ont retrouvé leur confort"
+      },
+      "blocks": {
+        "t-1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Je travaille debout huit heures par jour, mes pieds ne me font plus mal en fin de service.",
+            "author": "Nadia, aide-soignante"
+          }
+        },
+        "t-2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Enfin une semelle qui ne glisse pas dans la chaussure et qui absorbe vraiment les chocs.",
+            "author": "Thomas, commercial"
+          }
+        },
+        "t-3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Installation en deux minutes, découpées à ma pointure sans effort. Parfait.",
+            "author": "Julie, infirmière"
+          }
+        }
+      },
+      "block_order": ["t-1", "t-2", "t-3"]
+    }
   },
   "order": ["main", "guarantee", "testimonials"]
 }
