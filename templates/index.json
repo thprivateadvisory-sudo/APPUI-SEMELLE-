@@ -1,6 +1,10 @@
 {
   "sections": {
-    "debug": { "type": "index-debug" }
+    "hero":              { "type": "hero" },
+    "feature-grid":      { "type": "feature-grid" },
+    "editorial-panel":   { "type": "editorial-panel" },
+    "featured-products": { "type": "featured-products" },
+    "testimonials":      { "type": "testimonials" }
   },
-  "order": ["debug"]
+  "order": ["hero", "feature-grid", "editorial-panel", "featured-products", "testimonials"]
 }
