@@ -1,17 +1,17 @@
-<div class="topbar">
-  {{ section.settings.text }}
+<div
+  class="topbar"
+  data-messages='["{{ section.settings.message_1 | escape }}", "{{ section.settings.message_2 | escape }}", "{{ section.settings.message_3 | escape }}"]'
+>
+  <span class="topbar-text">{{ section.settings.message_1 }}</span>
 </div>
 
 {% schema %}
 {
   "name": "Bandeau d'annonce",
   "settings": [
-    {
-      "type": "text",
-      "id": "text",
-      "label": "Texte",
-      "default": "Livraison offerte partout en France · Essai 45 jours"
-    }
+    { "type": "text", "id": "message_1", "label": "Message 1", "default": "🚚 Livraison offerte partout en France · Expédié en 48h" },
+    { "type": "text", "id": "message_2", "label": "Message 2", "default": "↩ Satisfait ou remboursé — 45 jours d'essai sans risque" },
+    { "type": "text", "id": "message_3", "label": "Message 3", "default": "⚡ Commandez avant 16h → expédition aujourd'hui" }
   ]
 }
 {% endschema %}

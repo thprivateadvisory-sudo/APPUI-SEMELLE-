@@ -12,9 +12,33 @@
         {% endfor %}
       </div>
     {% endif %}
+
+    <div class="media-trust">
+      <div class="media-trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Paiement sécurisé
+      </div>
+      <div class="media-trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M12 19v2"/><path d="M8 19v2"/></svg>
+        Livraison 48h
+      </div>
+      <div class="media-trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        45 jours d'essai
+      </div>
+    </div>
   </div>
 
-  <div class="product-page-info">
+  <div class="product-page-info" id="product-page-info">
+    <div class="product-rating">
+      <span class="stars-icons" aria-hidden="true">★★★★★</span>
+      <span class="rating-text">
+        {% if section.settings.rating_score != blank %}{{ section.settings.rating_score }}{% else %}4.8{% endif %}/5
+        &nbsp;·&nbsp;
+        <u>{% if section.settings.rating_count != blank %}{{ section.settings.rating_count }}{% else %}2 347{% endif %} avis</u>
+      </span>
+    </div>
+
     <h1>{{ product.title }}</h1>
     {% if product.metafields.custom.tagline != blank %}
       <p class="tagline">{{ product.metafields.custom.tagline }}</p>
@@ -24,12 +48,26 @@
       <span class="price">{{ product.price | money }}</span>
       {% if product.compare_at_price > product.price %}
         <span class="price-old">{{ product.compare_at_price | money }}</span>
+        {% assign saving_pct = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+        <span class="price-badge">-{{ saving_pct }}%</span>
       {% endif %}
     </div>
 
-    <div class="product-page-desc">{{ product.description }}</div>
+    {% if product.available %}
+      <div class="stock-urgency">
+        <span class="stock-dot" aria-hidden="true"></span>
+        <span>En stock · expédié <strong>aujourd'hui</strong> si commande avant <strong>16h00</strong></span>
+      </div>
+    {% endif %}
 
-    {% form 'product', product %}
+    <ul class="benefit-list">
+      {% if section.settings.benefit_1 != blank %}<li>{{ section.settings.benefit_1 }}</li>{% endif %}
+      {% if section.settings.benefit_2 != blank %}<li>{{ section.settings.benefit_2 }}</li>{% endif %}
+      {% if section.settings.benefit_3 != blank %}<li>{{ section.settings.benefit_3 }}</li>{% endif %}
+      {% if section.settings.benefit_4 != blank %}<li>{{ section.settings.benefit_4 }}</li>{% endif %}
+    </ul>
+
+    {% form 'product', product, id: 'product-form' %}
       {% unless product.has_only_default_variant %}
         {% for option in product.options_with_values %}
           <label for="option-{{ forloop.index }}">{{ option.name }}</label>
@@ -42,16 +80,67 @@
       {% endunless %}
 
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-      <button type="submit" class="btn" {% unless product.available %}disabled{% endunless %}>
-        {% if product.available %}Ajouter au panier{% else %}Épuisé{% endif %}
+
+      <button type="submit" class="btn btn--add-cart" id="atc-main-btn" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Ajouter au panier
+        {% else %}
+          Épuisé
+        {% endif %}
       </button>
+
+      {% if product.available %}
+        {{ form | payment_button }}
+      {% endif %}
     {% endform %}
+
+    <div class="product-page-desc">{{ product.description }}</div>
+
+    <div class="guarantee-strip">
+      <div class="guarantee-strip-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Paiement sécurisé
+      </div>
+      <div class="guarantee-strip-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+        Retour gratuit 45j
+      </div>
+      <div class="guarantee-strip-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/></svg>
+        Livraison offerte dès 40€
+      </div>
+    </div>
   </div>
 </section>
+
+{% if product.available %}
+<div class="sticky-atc" id="sticky-atc" aria-hidden="true">
+  <div class="sticky-atc-inner">
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | image_url: width: 80 }}" alt="" class="sticky-atc-img">
+    {% endif %}
+    <div class="sticky-atc-info">
+      <strong>{{ product.title }}</strong>
+      <span>{{ product.price | money }}</span>
+    </div>
+    <button class="btn sticky-atc-btn" onclick="document.getElementById('atc-main-btn').click()" type="button">
+      Ajouter au panier
+    </button>
+  </div>
+</div>
+{% endif %}
 
 {% schema %}
 {
   "name": "Page produit",
-  "settings": []
+  "settings": [
+    { "type": "text",    "id": "rating_score", "label": "Note (ex: 4.8)",           "default": "4.8" },
+    { "type": "text",    "id": "rating_count", "label": "Nombre d'avis (ex: 2 347)", "default": "2 347" },
+    { "type": "text",    "id": "benefit_1",    "label": "Bénéfice 1", "default": "✓ Soulage les douleurs en 7 jours ou remboursé" },
+    { "type": "text",    "id": "benefit_2",    "label": "Bénéfice 2", "default": "✓ Compatible toutes chaussures — découpe à votre pointure" },
+    { "type": "text",    "id": "benefit_3",    "label": "Bénéfice 3", "default": "✓ Validée par des kinésithérapeutes" },
+    { "type": "text",    "id": "benefit_4",    "label": "Bénéfice 4", "default": "✓ Mémoire de forme longue durée (18 mois min.)" }
+  ]
 }
 {% endschema %}
