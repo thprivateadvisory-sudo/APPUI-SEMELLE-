@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -52,7 +61,13 @@
           }
         }
       },
-      "block_order": ["feat-1", "feat-2", "feat-3", "feat-4"]
+      "block_order": [
+        "feat-1",
+        "feat-2",
+        "feat-3",
+        "feat-4"
+      ],
+      "settings": {}
     },
     "editorial-panel": {
       "type": "editorial-panel",
@@ -66,16 +81,11 @@
     "featured-products": {
       "type": "featured-products",
       "settings": {
-        "heading": "Nos semelles",
-        "subheading": "Choisissez selon votre usage"
+        "heading": "Nos semelles"
       }
     },
     "guarantee": {
       "type": "guarantee",
-      "settings": {
-        "heading": "Zéro risque pour vous",
-        "text": "On est tellement confiants dans nos semelles qu'on vous offre 45 jours pour changer d'avis — sans justification, sans paperasse."
-      },
       "blocks": {
         "g-1": {
           "type": "item",
@@ -110,13 +120,19 @@
           }
         }
       },
-      "block_order": ["g-1", "g-2", "g-3", "g-4"]
+      "block_order": [
+        "g-1",
+        "g-2",
+        "g-3",
+        "g-4"
+      ],
+      "settings": {
+        "heading": "Zéro risque pour vous",
+        "text": "On est tellement confiants dans nos semelles qu'on vous offre 45 jours pour changer d'avis — sans justification, sans paperasse."
+      }
     },
     "social-proof": {
       "type": "social-proof",
-      "settings": {
-        "heading": "Ils l'ont adopté"
-      },
       "blocks": {
         "r-1": {
           "type": "review",
@@ -135,13 +151,16 @@
           }
         }
       },
-      "block_order": ["r-1", "r-2"]
+      "block_order": [
+        "r-1",
+        "r-2"
+      ],
+      "settings": {
+        "heading": "Ils l'ont adopté"
+      }
     },
     "testimonials": {
       "type": "testimonials",
-      "settings": {
-        "heading": "Ils ont retrouvé leur confort"
-      },
       "blocks": {
         "t-1": {
           "type": "testimonial",
@@ -176,8 +195,24 @@
           }
         }
       },
-      "block_order": ["t-1", "t-2", "t-3", "t-4"]
+      "block_order": [
+        "t-1",
+        "t-2",
+        "t-3",
+        "t-4"
+      ],
+      "settings": {
+        "heading": "Ils ont retrouvé leur confort"
+      }
     }
   },
-  "order": ["hero", "feature-grid", "editorial-panel", "featured-products", "guarantee", "social-proof", "testimonials"]
+  "order": [
+    "hero",
+    "feature-grid",
+    "editorial-panel",
+    "featured-products",
+    "guarantee",
+    "social-proof",
+    "testimonials"
+  ]
 }
