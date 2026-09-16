@@ -1,0 +1,57 @@
+<section class="product-page">
+  <div class="product-page-media">
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.featured_image.alt | escape }}" loading="eager">
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag }}
+    {% endif %}
+    {% if product.images.size > 1 %}
+      <div class="product-thumbs">
+        {% for image in product.images %}
+          <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape }}" loading="lazy">
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="product-page-info">
+    <h1>{{ product.title }}</h1>
+    {% if product.metafields.custom.tagline != blank %}
+      <p class="tagline">{{ product.metafields.custom.tagline }}</p>
+    {% endif %}
+
+    <div class="price-row">
+      <span class="price">{{ product.price | money }}</span>
+      {% if product.compare_at_price > product.price %}
+        <span class="price-old">{{ product.compare_at_price | money }}</span>
+      {% endif %}
+    </div>
+
+    <div class="product-page-desc">{{ product.description }}</div>
+
+    {% form 'product', product %}
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          <label for="option-{{ forloop.index }}">{{ option.name }}</label>
+          <select id="option-{{ forloop.index }}" name="options[{{ option.name | escape }}]">
+            {% for value in option.values %}
+              <option value="{{ value | escape }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        {% endfor %}
+      {% endunless %}
+
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" class="btn" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}Ajouter au panier{% else %}Épuisé{% endif %}
+      </button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page produit",
+  "settings": []
+}
+{% endschema %}

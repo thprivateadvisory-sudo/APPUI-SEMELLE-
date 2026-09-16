@@ -1,0 +1,25 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Appui",
+    "theme_version": "1.0.0",
+    "theme_author": "Groupe Cohesif",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Fond", "default": "#F4EFE3" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#B85C34" },
+      { "type": "color", "id": "color_ink", "label": "Texte", "default": "#2B2117" }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      { "type": "header", "content": "Polices" },
+      { "type": "paragraph", "content": "Ce thème utilise Fraunces pour les titres et Work Sans pour le texte, chargées automatiquement." }
+    ]
+  }
+]

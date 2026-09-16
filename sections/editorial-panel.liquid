@@ -1,0 +1,36 @@
+<section class="panel-dark">
+  <div class="inner">
+    <div>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_label }}</a>
+      {% endif %}
+    </div>
+    <div class="panel-image">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.heading | escape }}" loading="lazy">
+      {% else %}
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 100 C40 60 60 40 100 40 C140 40 160 70 175 100" stroke="#F4EFE3" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <circle cx="100" cy="40" r="8" fill="#F4EFE3"/>
+          <path d="M15 110 Q100 130 185 110" stroke="#F4EFE3" stroke-width="2" fill="none" opacity="0.4"/>
+        </svg>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Panneau éditorial",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Marcher ne devrait pas faire mal." },
+    { "type": "textarea", "id": "text", "label": "Texte", "default": "Pas de rendez-vous chez le podologue à attendre trois semaines. Vous commandez en ligne, vous glissez la semelle dans la chaussure, et vous marchez différemment dès le premier jour." },
+    { "type": "text", "id": "button_label", "label": "Bouton, texte", "default": "Voir la gamme" },
+    { "type": "url", "id": "button_link", "label": "Bouton, lien" },
+    { "type": "image_picker", "id": "image", "label": "Image (optionnel)" }
+  ],
+  "presets": [ { "name": "Panneau éditorial" } ]
+}
+{% endschema %}

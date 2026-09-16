@@ -1,0 +1,30 @@
+{% paginate collection.products by 12 %}
+<section class="products">
+  <div class="section-head">
+    <h2>{{ collection.title }}</h2>
+    {% if collection.description != blank %}
+      <p>{{ collection.description }}</p>
+    {% endif %}
+  </div>
+  <div class="product-grid">
+    {% for product in collection.products %}
+      {% render 'product-card', product: product %}
+    {% else %}
+      <p>Aucun produit dans cette collection pour le moment.</p>
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+</section>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Grille de collection",
+  "settings": []
+}
+{% endschema %}

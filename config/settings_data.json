@@ -1,0 +1,14 @@
+{
+  "current": {
+    "color_background": "#F4EFE3",
+    "color_accent": "#B85C34",
+    "color_ink": "#2B2117"
+  },
+  "presets": {
+    "Appui": {
+      "color_background": "#F4EFE3",
+      "color_accent": "#B85C34",
+      "color_ink": "#2B2117"
+    }
+  }
+}

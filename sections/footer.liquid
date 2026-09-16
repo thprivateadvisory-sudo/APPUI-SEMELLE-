@@ -1,0 +1,56 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <span class="brand">{{ section.settings.logo_text | default: shop.name }}</span>
+    </div>
+    {% for block in section.blocks %}
+      <div class="foot-col">
+        <h4>{{ block.settings.title }}</h4>
+        {% for link in block.settings.menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    <span>{{ section.settings.tagline }}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Texte du logo",
+      "default": "Appui"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Phrase de fin",
+      "default": "Fabriqué avec soin, livré depuis la France"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Colonne de liens",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Boutique" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "link_column", "settings": { "title": "Boutique" } },
+      { "type": "link_column", "settings": { "title": "Aide" } },
+      { "type": "link_column", "settings": { "title": "À propos" } }
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+<section class="products">
+  <div class="section-head">
+    <h2>Résultats pour « {{ search.terms }} »</h2>
+  </div>
+  <div class="product-grid">
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        {% render 'product-card', product: item %}
+      {% endif %}
+    {% else %}
+      <p>Aucun résultat. Essayez un autre mot-clé.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recherche",
+  "settings": []
+}
+{% endschema %}

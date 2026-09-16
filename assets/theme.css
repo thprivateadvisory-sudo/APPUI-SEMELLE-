@@ -1,0 +1,214 @@
+:root{
+  --bg:#F4EFE3;
+  --bg-card:#ECE3D0;
+  --ink:#2B2117;
+  --ink-soft:#6B6053;
+  --accent:#B85C34;
+  --accent-deep:#8C431F;
+  --line:#DED2B8;
+  --panel-dark:#241A11;
+  --panel-dark-ink:#F4EFE3;
+  --panel-dark-soft:#C9BBA4;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Work Sans", sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block;}
+a{color:inherit; text-decoration:none;}
+
+.skip-to-content{
+  position:absolute; left:-999px; top:auto;
+}
+.skip-to-content:focus{
+  position:fixed; top:10px; left:10px; z-index:100;
+  background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
+}
+
+/* ---------- Header ---------- */
+.topbar{
+  background:var(--panel-dark);
+  color:var(--panel-dark-soft);
+  text-align:center;
+  font-size:.8rem;
+  padding:9px 16px;
+}
+.main-header{
+  position:sticky; top:0; z-index:40;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px;
+  max-width:1180px; margin:0 auto;
+}
+.nav .icon-btn{
+  width:26px; height:26px; display:flex; align-items:center; justify-content:center;
+  background:none; border:none; cursor:pointer; color:var(--ink); padding:0;
+}
+.brand{
+  font-family:"Fraunces", serif;
+  font-weight:600;
+  font-size:1.55rem;
+  letter-spacing:-.01em;
+  color:var(--accent-deep);
+}
+.cart-dot{position:relative;}
+.cart-dot::after{
+  content:attr(data-cart-count);
+  position:absolute; top:-6px; right:-9px;
+  background:var(--accent); color:#fff;
+  font-size:.6rem;
+  width:15px; height:15px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.mobile-nav{
+  display:none; flex-direction:column;
+  padding:0 24px 16px;
+  border-top:1px solid var(--line);
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{padding:10px 0; font-size:.95rem;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  background:var(--accent);
+  color:#fff;
+  font-family:"Work Sans"; font-weight:600; font-size:.95rem;
+  padding:14px 26px;
+  border-radius:100px;
+  border:none;
+  cursor:pointer;
+  transition:background .18s ease, transform .18s ease;
+}
+.btn:hover{background:var(--accent-deep);}
+.btn:active{transform:scale(.97);}
+.btn:focus-visible{outline:2px solid var(--accent-deep); outline-offset:3px;}
+.btn.cart-secondary{background:transparent; color:var(--ink); border:1px solid var(--ink); margin-right:10px;}
+
+/* ---------- Hero ---------- */
+.hero{padding:56px 24px 40px; text-align:center;}
+.eyebrow-free{font-size:.95rem; color:var(--ink-soft); margin:0 0 18px;}
+.hero h1{
+  font-family:"Fraunces", serif; font-weight:500;
+  font-size:clamp(2.1rem, 7vw, 3.1rem);
+  line-height:1.08; letter-spacing:-.01em;
+  margin:0 auto 20px; max-width:15ch;
+}
+.hero p.lede{
+  font-size:1.05rem; color:var(--ink-soft);
+  max-width:34ch; margin:0 auto 28px; line-height:1.55;
+}
+.hero-visual{
+  margin-top:40px; border-radius:28px;
+  background:linear-gradient(180deg, #E4D6BE 0%, var(--bg-card) 100%);
+  padding:36px 20px 8px; overflow:hidden;
+}
+.hero-visual svg, .hero-visual img{margin:0 auto; width:min(320px, 78%); border-radius:16px;}
+.hero-stats{
+  display:flex; justify-content:center; gap:28px;
+  padding:22px 0 4px; border-top:1px solid var(--line); margin-top:28px;
+  font-size:.82rem; color:var(--ink-soft);
+}
+.hero-stats b{display:block; color:var(--ink); font-family:"Fraunces", serif; font-size:1.25rem; font-weight:500;}
+
+/* ---------- Features ---------- */
+.features{padding:8px 24px 48px;}
+.features-grid{
+  max-width:1180px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+.feature-card{background:var(--bg-card); border-radius:20px; padding:28px 24px; text-align:center;}
+.feature-card h3{font-family:"Fraunces", serif; font-weight:500; font-size:1.08rem; margin:0 0 8px;}
+.feature-card p{font-size:.88rem; color:var(--ink-soft); line-height:1.5; margin:0;}
+
+/* ---------- Dark panel ---------- */
+.panel-dark{background:var(--panel-dark); color:var(--panel-dark-ink); padding:64px 24px;}
+.panel-dark .inner{max-width:640px; margin:0 auto; text-align:left;}
+.panel-dark h2{font-family:"Fraunces", serif; font-weight:500; font-size:clamp(1.7rem, 5vw, 2.4rem); line-height:1.14; margin:0 0 20px;}
+.panel-dark p{font-size:1rem; line-height:1.65; color:var(--panel-dark-soft); margin:0 0 28px; max-width:42ch;}
+.panel-image{
+  margin-top:40px; border-radius:20px; overflow:hidden;
+  background:linear-gradient(135deg, #3A2A1B, #6B4126 60%, #B85C34);
+  aspect-ratio:16/10; display:flex; align-items:center; justify-content:center;
+}
+.panel-image svg, .panel-image img{width:100%; height:100%; object-fit:cover;}
+
+/* ---------- Products ---------- */
+.products{padding:64px 24px;}
+.section-head{max-width:640px; margin:0 auto 32px; text-align:center;}
+.section-head h2{font-family:"Fraunces", serif; font-weight:500; font-size:clamp(1.7rem,5vw,2.3rem); margin:0 0 12px;}
+.section-head p{color:var(--ink-soft); margin:0; font-size:.98rem; line-height:1.5;}
+.product-grid{
+  max-width:1000px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+.product-card{background:var(--bg-card); border-radius:22px; overflow:hidden; display:block;}
+.product-media{aspect-ratio:4/3.2; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#F4EFE3,#E4D6BE); padding:24px; overflow:hidden;}
+.product-media img{width:100%; height:100%; object-fit:cover; border-radius:12px;}
+.product-body{padding:22px 22px 26px;}
+.product-body h3{font-family:"Fraunces", serif; font-weight:500; font-size:1.2rem; margin:0 0 6px;}
+.product-body .tagline{color:var(--ink-soft); font-size:.88rem; margin:0 0 14px;}
+.price-row{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+.price{font-weight:600; font-size:1.1rem;}
+.price-old{color:var(--ink-soft); text-decoration:line-through; font-size:.92rem;}
+.price-badge{background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; padding:3px 9px; border-radius:100px;}
+.stars{color:var(--accent-deep); font-size:.85rem; letter-spacing:1px;}
+.stars span{color:var(--ink-soft); letter-spacing:normal; margin-left:4px;}
+.product-body .btn{width:100%; justify-content:center; margin-top:16px; background:transparent; color:var(--ink); border:1px solid var(--ink);}
+.product-body .btn:hover{background:var(--ink); color:var(--bg);}
+
+/* ---------- Testimonials ---------- */
+.testimonials{padding:16px 24px 64px;}
+.testimonial-scroll{display:flex; gap:14px; overflow-x:auto; max-width:1180px; margin:0 auto; scroll-snap-type:x mandatory; padding-bottom:4px;}
+.testimonial-card{scroll-snap-align:start; flex:0 0 260px; background:var(--bg-card); border-radius:18px; padding:22px;}
+.testimonial-card .stars{display:block; margin-bottom:10px;}
+.testimonial-card p{font-size:.92rem; line-height:1.55; margin:0 0 14px;}
+.testimonial-card .who{font-size:.8rem; color:var(--ink-soft);}
+
+/* ---------- Product page ---------- */
+.product-page{padding:24px; max-width:1000px; margin:0 auto; display:grid; gap:32px;}
+.product-page-media img{border-radius:20px; width:100%;}
+.product-thumbs{display:flex; gap:8px; margin-top:10px;}
+.product-thumbs img{width:60px; height:60px; object-fit:cover; border-radius:10px;}
+.product-page-info h1{font-family:"Fraunces", serif; font-size:1.9rem; margin:0 0 6px;}
+.product-page-desc{color:var(--ink-soft); line-height:1.6; margin:16px 0 24px;}
+
+/* ---------- Cart ---------- */
+.cart-page{padding:32px 24px; max-width:800px; margin:0 auto;}
+.cart-item{display:grid; grid-template-columns:70px 1fr auto; gap:14px; align-items:center; padding:16px 0; border-bottom:1px solid var(--line);}
+.cart-item img{border-radius:10px;}
+.cart-total{display:flex; justify-content:space-between; padding:20px 0; font-weight:600;}
+
+/* ---------- Simple page ---------- */
+.simple-page{padding:48px 24px; max-width:700px; margin:0 auto;}
+.simple-page h1{font-family:"Fraunces", serif; font-size:2rem; margin:0 0 20px;}
+.page-content{line-height:1.7; color:var(--ink-soft);}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--panel-dark); color:var(--panel-dark-soft); padding:48px 24px 28px;}
+.footer-inner{max-width:1180px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:32px;}
+.site-footer .brand{color:var(--panel-dark-ink);}
+.foot-col h4{font-size:.82rem; color:var(--panel-dark-ink); margin:0 0 12px; font-weight:600;}
+.foot-col a{display:block; font-size:.85rem; color:var(--panel-dark-soft); margin-bottom:9px;}
+.foot-col a:hover{color:var(--panel-dark-ink);}
+.footer-bottom{max-width:1180px; margin:40px auto 0; padding-top:20px; border-top:1px solid rgba(255,255,255,.08); font-size:.75rem; color:var(--panel-dark-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+@media (min-width:720px){
+  .hero{padding:88px 24px 56px;}
+  .hero-visual{padding:56px 20px 8px;}
+  .panel-dark .inner{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; max-width:1100px; text-align:left;}
+  .panel-image{margin-top:0;}
+  .product-page{grid-template-columns:1fr 1fr;}
+  .mobile-nav{display:flex !important; flex-direction:row; border-top:none; padding:0; gap:20px;}
+}

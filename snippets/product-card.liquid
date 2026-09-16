@@ -1,0 +1,35 @@
+{%- comment -%} Attend un objet `product` en paramètre {%- endcomment -%}
+<a href="{{ product.url }}" class="product-card">
+  <div class="product-media">
+    {% if product.featured_image %}
+      <img
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        alt="{{ product.featured_image.alt | escape }}"
+        loading="lazy"
+        width="300"
+        height="240"
+      >
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+  <div class="product-body">
+    <h3>{{ product.title }}</h3>
+    {% if product.metafields.custom.tagline != blank %}
+      <p class="tagline">{{ product.metafields.custom.tagline }}</p>
+    {% endif %}
+    <div class="price-row">
+      <span class="price">{{ product.price | money }}</span>
+      {% if product.compare_at_price > product.price %}
+        <span class="price-old">{{ product.compare_at_price | money }}</span>
+        <span class="price-badge">
+          -{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}%
+        </span>
+      {% endif %}
+    </div>
+    {% if product.metafields.reviews.rating != blank %}
+      <div class="stars">★★★★★<span>{{ product.metafields.reviews.rating }}</span></div>
+    {% endif %}
+    <span class="btn">Voir le produit</span>
+  </div>
+</a>

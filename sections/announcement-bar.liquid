@@ -1,0 +1,17 @@
+<div class="topbar">
+  {{ section.settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "Bandeau d'annonce",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texte",
+      "default": "Livraison offerte partout en France · Essai 45 jours"
+    }
+  ]
+}
+{% endschema %}

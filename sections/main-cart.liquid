@@ -1,0 +1,39 @@
+<section class="cart-page">
+  <h1>Votre panier</h1>
+
+  {% if cart.item_count == 0 %}
+    <p>Votre panier est vide.</p>
+    <a href="{{ routes.all_products_collection_url }}" class="btn">Continuer mes achats</a>
+  {% else %}
+    {% form 'cart', cart %}
+      <div class="cart-items">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" loading="lazy">
+            <div>
+              <h3>{{ item.product.title }}</h3>
+              {% unless item.product.has_only_default_variant %}
+                <p class="tagline">{{ item.variant.title }}</p>
+              {% endunless %}
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+            </div>
+            <span class="price">{{ item.final_line_price | money }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="cart-total">
+        <span>Total</span>
+        <span class="price">{{ cart.total_price | money }}</span>
+      </div>
+      <button type="submit" name="update" class="btn cart-secondary">Mettre à jour</button>
+      <button type="submit" name="checkout" class="btn">Passer commande</button>
+    {% endform %}
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Panier",
+  "settings": []
+}
+{% endschema %}
