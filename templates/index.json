@@ -1,11 +1,6 @@
 {
   "sections": {
-    "hero":             { "type": "hero" },
-    "feature-grid":     { "type": "feature-grid" },
-    "editorial-panel":  { "type": "editorial-panel" },
-    "featured-products":{ "type": "featured-products" },
-    "social-proof":     { "type": "social-proof" },
-    "testimonials":     { "type": "testimonials" }
+    "debug": { "type": "index-debug" }
   },
-  "order": ["hero", "feature-grid", "editorial-panel", "featured-products", "social-proof", "testimonials"]
+  "order": ["debug"]
 }
