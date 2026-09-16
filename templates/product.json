@@ -1,6 +1,8 @@
 {
   "sections": {
-    "main": { "type": "main-product" }
+    "main":      { "type": "main-product" },
+    "guarantee": { "type": "guarantee" },
+    "testimonials": { "type": "testimonials" }
   },
-  "order": ["main"]
+  "order": ["main", "guarantee", "testimonials"]
 }

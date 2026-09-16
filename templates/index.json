@@ -4,8 +4,9 @@
     "feature-grid":      { "type": "feature-grid" },
     "editorial-panel":   { "type": "editorial-panel" },
     "featured-products": { "type": "featured-products" },
+    "guarantee":         { "type": "guarantee" },
     "social-proof":      { "type": "social-proof" },
     "testimonials":      { "type": "testimonials" }
   },
-  "order": ["hero", "feature-grid", "editorial-panel", "featured-products", "social-proof", "testimonials"]
+  "order": ["hero", "feature-grid", "editorial-panel", "featured-products", "guarantee", "social-proof", "testimonials"]
 }
