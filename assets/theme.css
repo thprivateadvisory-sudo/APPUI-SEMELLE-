@@ -1313,3 +1313,49 @@ a { color: inherit; text-decoration: none; }
   .nav { padding: 14px 48px; }
   .hero { padding: 100px 48px 60px; }
 }
+
+/* ── Comparison table — mobile ───────────────────────── */
+@media (max-width: 639px) {
+  /* Section sans padding horizontal pour laisser le tableau respirer */
+  .comparison-section { padding: 48px 0; }
+  .comparison-inner { padding: 0 16px; }
+
+  /* Wrap prend toute la largeur pour que le scroll fonctionne */
+  .comparison-wrap {
+    margin: 20px -16px 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  /* Cellules plus compactes */
+  .comparison-table th,
+  .comparison-table td {
+    padding: 11px 10px;
+    font-size: .78rem;
+  }
+  .comparison-table th { font-size: .8rem; }
+  .comparison-table small { font-size: .7rem; }
+
+  /* Première colonne (Critère) collée à gauche pendant le scroll */
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    position: sticky; left: 0; z-index: 2;
+    background: var(--bg);
+    border-right: 1px solid var(--line);
+    min-width: 96px; max-width: 100px;
+    font-size: .75rem;
+  }
+  .comparison-table thead th:first-child { background: var(--bg); }
+
+  /* Bouton CTA sous le tableau — texte autorisé à wrapper */
+  .comparison-inner .btn--hero {
+    white-space: normal;
+    width: 100%;
+    text-align: center;
+    line-height: 1.4;
+    padding: 14px 20px;
+  }
+  .comparison-inner > div[style] {
+    padding: 0 16px;
+  }
+}
