@@ -918,6 +918,157 @@ a { color: inherit; text-decoration: none; }
 }
 .comparison-table small { display: block; font-size: .78rem; color: var(--ink-soft); font-weight: 400; }
 
+/* ── Visually hidden (accessible labels) ────────────── */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── Testimonial — badge achat vérifié ───────────────── */
+.testimonial-card-header {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+  margin-bottom: 14px;
+}
+.testimonial-card-header .star-badge { margin-bottom: 0; }
+.verified-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: .72rem; font-weight: 600;
+  color: #2D6A2D;
+  background: #F0FAF0;
+  border: 1px solid #B8E0B8;
+  padding: 3px 9px; border-radius: var(--radius-pill);
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+.verified-badge svg { color: #2D9A2D; flex-shrink: 0; }
+
+/* ── Quantity stepper (page produit) ─────────────────── */
+.qty-row {
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 16px;
+}
+.qty-label {
+  font-size: .82rem; font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: .04em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.qty-stepper {
+  display: inline-flex; align-items: center;
+  border: 1.5px solid var(--line);
+  border-radius: 12px; overflow: hidden;
+  background: var(--bg-card);
+}
+.qty-btn {
+  width: 38px; height: 42px;
+  background: none; border: none; cursor: pointer;
+  font-size: 1.15rem; font-weight: 500;
+  color: var(--ink); line-height: 1;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.qty-btn:hover { background: var(--line); }
+.qty-input {
+  width: 46px; height: 42px;
+  border: none; border-left: 1.5px solid var(--line); border-right: 1.5px solid var(--line);
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  font-size: .95rem; font-weight: 600;
+  color: var(--ink); background: var(--bg-card);
+  -moz-appearance: textfield;
+}
+.qty-input::-webkit-inner-spin-button,
+.qty-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.qty-bundle-hint {
+  font-size: .78rem; color: var(--accent);
+  font-weight: 600; line-height: 1.3;
+}
+
+/* ── Cart — quantité & prix ───────────────────────────── */
+.cart-qty-row { margin-top: 8px; }
+.cart-qty-input {
+  width: 60px; padding: 6px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  font-family: "Work Sans", sans-serif;
+  font-size: .9rem; font-weight: 600;
+  text-align: center;
+  background: var(--bg-card); color: var(--ink);
+  -moz-appearance: textfield;
+}
+.cart-qty-input::-webkit-inner-spin-button,
+.cart-qty-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.cart-item-price {
+  display: flex; flex-direction: column;
+  align-items: flex-end; gap: 2px;
+  text-align: right;
+}
+.cart-item-price .price-old {
+  font-size: .78rem;
+}
+
+/* ── Cart — barre livraison offerte ──────────────────── */
+.cart-shipping-notice {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .84rem; font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 10px;
+  margin: 8px 0 4px;
+  background: #FFF8F3;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+.cart-shipping-notice--free {
+  background: #F0FAF0;
+  border-color: #B8E0B8;
+  color: #2D6A2D;
+}
+.cart-shipping-notice svg { color: var(--accent); flex-shrink: 0; }
+.cart-shipping-notice--free svg { color: #2D9A2D; }
+
+/* ── Cart — bloc checkout ────────────────────────────── */
+.cart-checkout-block {
+  display: flex; flex-direction: column; gap: 10px;
+  margin: 8px 0 24px;
+}
+.btn--checkout {
+  width: 100%; padding: 17px; font-size: 1.05rem;
+  box-shadow: 0 4px 18px rgba(196,98,45,.30);
+}
+.btn--checkout:hover { box-shadow: 0 6px 24px rgba(196,98,45,.45); }
+.cart-update-btn {
+  width: 100%; padding: 13px; font-size: .88rem;
+}
+
+/* ── Cart — bloc réassurance ─────────────────────────── */
+.cart-reassurance {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  overflow: hidden;
+}
+.cart-reassurance-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: .84rem;
+}
+.cart-reassurance-item:last-child { border-bottom: none; }
+.cart-reassurance-item svg {
+  flex-shrink: 0; color: var(--accent); margin-top: 2px;
+}
+.cart-reassurance-item div {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.cart-reassurance-item strong {
+  font-size: .88rem; font-weight: 600; color: var(--ink);
+}
+.cart-reassurance-item span { color: var(--ink-soft); line-height: 1.45; }
+
 /* ── Topbar fade animation ───────────────────────────── */
 .topbar-text {
   display: inline-block;
