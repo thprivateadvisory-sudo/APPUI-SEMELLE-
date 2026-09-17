@@ -1,42 +1,101 @@
 <section class="products" id="produits">
-  <div class="section-head">
-    <h2>{{ section.settings.heading }}</h2>
-    {% if section.settings.text != blank %}
-      <p>{{ section.settings.text }}</p>
-    {% endif %}
-  </div>
-
-  <div class="product-grid">
-    {% for block in section.blocks %}
-      {% if block.settings.product != blank %}
-        {% render 'product-card',
-          product:   block.settings.product,
-          badge:     block.settings.badge,
-          benefit_1: block.settings.benefit_1,
-          benefit_2: block.settings.benefit_2,
-          benefit_3: block.settings.benefit_3,
-          btn_label: block.settings.btn_label
-        %}
+  <div class="products-inner">
+    <div class="section-head">
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}
+        <p>{{ section.settings.text }}</p>
       {% endif %}
-    {% endfor %}
-  </div>
+    </div>
 
-  <div class="products-trust-strip">
-    <div class="products-trust-item">
-      <span class="products-trust-icon">↩</span>
-      <span><strong>45 jours</strong> satisfait ou remboursé</span>
+    {%- assign src = section.settings.collection -%}
+    {%- if src == blank -%}
+      {%- assign src = collections.all -%}
+    {%- endif -%}
+
+    {%- assign badges   = section.settings.badges   | split: "|" -%}
+    {%- assign benefits = section.settings.benefits | split: "||" -%}
+
+    <div class="product-grid">
+      {%- assign shown = 0 -%}
+      {% for product in src.products limit: section.settings.limit %}
+        {%- assign idx = forloop.index0 -%}
+        {%- assign badge_text   = badges[idx]   | strip -%}
+        {%- assign benefit_block = benefits[idx] | split: "|" -%}
+        {% render 'product-card',
+          product:   product,
+          badge:     badge_text,
+          benefit_1: benefit_block[0],
+          benefit_2: benefit_block[1],
+          benefit_3: benefit_block[2]
+        %}
+        {%- assign shown = shown | plus: 1 -%}
+      {% endfor %}
+
+      {% if shown == 0 %}
+        <div class="product-card product-card--demo">
+          <div class="product-media">
+            <div class="product-badge">🔥 Bestseller</div>
+            {{ 'product-1' | placeholder_svg_tag }}
+          </div>
+          <div class="product-body">
+            <div class="product-card-rating">
+              <span class="stars-icons">★★★★★</span>
+              <span class="stars-text">4.8 / 5 · 2 300 avis</span>
+            </div>
+            <h3>Appui Classic</h3>
+            <ul class="product-card-benefits">
+              <li>Soulagement dès le premier jour</li>
+              <li>Compatible toutes chaussures</li>
+              <li>Durée de vie +18 mois</li>
+            </ul>
+            <div class="price-row">
+              <span class="price">29,00 €</span>
+              <span class="price-old">49,00 €</span>
+              <span class="price-badge">-41%</span>
+            </div>
+            <span class="btn btn--card">Ajouter au panier</span>
+            <div class="product-card-trust">
+              <span>↩ 45 jours remboursé</span>
+              <span>🚚 Livraison offerte</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card product-card--demo">
+          <div class="product-media">
+            <div class="product-badge">❄️ Édition hivernale</div>
+            {{ 'product-2' | placeholder_svg_tag }}
+          </div>
+          <div class="product-body">
+            <div class="product-card-rating">
+              <span class="stars-icons">★★★★★</span>
+              <span class="stars-text">4.7 / 5 · 1 100 avis</span>
+            </div>
+            <h3>Appui Chauf</h3>
+            <ul class="product-card-benefits">
+              <li>Chaleur jusqu'à 8h rechargeable USB</li>
+              <li>Idéale outdoor et métiers extérieur</li>
+              <li>Même confort orthopédique</li>
+            </ul>
+            <div class="price-row">
+              <span class="price">39,00 €</span>
+              <span class="price-old">59,00 €</span>
+              <span class="price-badge">-34%</span>
+            </div>
+            <span class="btn btn--card">Ajouter au panier</span>
+            <div class="product-card-trust">
+              <span>↩ 45 jours remboursé</span>
+              <span>🚚 Livraison offerte</span>
+            </div>
+          </div>
+        </div>
+      {% endif %}
     </div>
-    <div class="products-trust-item">
-      <span class="products-trust-icon">🚚</span>
-      <span><strong>Livraison offerte</strong> dès 40€ · 48h</span>
-    </div>
-    <div class="products-trust-item">
-      <span class="products-trust-icon">🔒</span>
-      <span>Paiement <strong>100% sécurisé</strong></span>
-    </div>
-    <div class="products-trust-item">
-      <span class="products-trust-icon">🏆</span>
-      <span>Validé par des <strong>kinés</strong></span>
+
+    <div class="products-trust-strip">
+      <div class="products-trust-item"><span>↩</span><span><strong>45 jours</strong> satisfait ou remboursé</span></div>
+      <div class="products-trust-item"><span>🚚</span><span><strong>Livraison offerte</strong> dès 40€ · 48h</span></div>
+      <div class="products-trust-item"><span>🔒</span><span>Paiement <strong>100% sécurisé</strong></span></div>
+      <div class="products-trust-item"><span>🏆</span><span>Validé par des <strong>kinés</strong></span></div>
     </div>
   </div>
 </section>
@@ -45,22 +104,12 @@
 {
   "name": "Produits en avant",
   "settings": [
-    { "type": "text",     "id": "heading", "label": "Titre",      "default": "Choisissez votre semelle" },
-    { "type": "textarea", "id": "text",    "label": "Sous-titre", "default": "Une base de confort pour toute l'année, et une version chauffante pour les mois froids." }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Produit",
-      "settings": [
-        { "type": "product",  "id": "product",   "label": "Produit" },
-        { "type": "text",     "id": "badge",     "label": "Badge (ex : 🔥 Bestseller)" },
-        { "type": "text",     "id": "benefit_1", "label": "Avantage 1" },
-        { "type": "text",     "id": "benefit_2", "label": "Avantage 2" },
-        { "type": "text",     "id": "benefit_3", "label": "Avantage 3" },
-        { "type": "text",     "id": "btn_label", "label": "Texte du bouton", "default": "Ajouter au panier" }
-      ]
-    }
+    { "type": "text",       "id": "heading",    "label": "Titre",             "default": "Choisissez votre semelle" },
+    { "type": "textarea",   "id": "text",       "label": "Sous-titre",        "default": "Deux modèles. Une seule promesse : marcher sans douleur." },
+    { "type": "collection", "id": "collection", "label": "Collection à afficher" },
+    { "type": "range",      "id": "limit",      "label": "Nombre de produits", "min": 1, "max": 8, "default": 4 },
+    { "type": "text",       "id": "badges",     "label": "Badges (séparés par |)", "default": "🔥 Bestseller|❄️ Édition hivernale", "info": "Un badge par produit, séparés par |" },
+    { "type": "textarea",   "id": "benefits",   "label": "Avantages produits", "default": "Soulagement dès le 1er jour|Compatible toutes chaussures|Durée de vie +18 mois||Chaleur jusqu'à 8h rechargeable|Idéale outdoor et métiers extérieur|Même confort orthopédique", "info": "3 avantages par produit séparés par |, produits séparés par ||" }
   ],
   "presets": [ { "name": "Produits en avant" } ]
 }

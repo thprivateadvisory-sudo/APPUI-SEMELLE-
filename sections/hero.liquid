@@ -1,6 +1,6 @@
 <section class="hero">
-  <div class="hero-bg{% if section.settings.image == blank %} hero-bg--gradient{% endif %}">
-    {% unless section.settings.image == blank %}
+  <div class="hero-bg">
+    {% if section.settings.image != blank %}
       <img
         src="{{ section.settings.image | image_url: width: 1600 }}"
         alt=""
@@ -8,7 +8,15 @@
         loading="eager"
         fetchpriority="high"
       >
-    {% endunless %}
+    {% else %}
+      <img
+        src="{{ 'editorial-lifestyle.png' | asset_url }}"
+        alt=""
+        role="presentation"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {% endif %}
   </div>
 
   <div class="hero-content">
