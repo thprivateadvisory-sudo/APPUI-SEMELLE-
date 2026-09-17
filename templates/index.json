@@ -13,10 +13,10 @@
       "type": "hero",
       "settings": {
         "rating_text": "4.8/5 · 2 300 avis",
-        "heading": "Vos pieds portent tout le poids. Il est temps de les soutenir.",
-        "text": "Des semelles de confort et de posture, glissées dans vos chaussures en dix secondes.",
-        "button_label": "Découvrir les semelles",
-        "button_link": "/collections/all",
+        "heading": "Fini les pieds qui font mal. Dès aujourd'hui.",
+        "text": "Glissez la semelle dans vos chaussures en 10 secondes. Résultat dès le premier jour.",
+        "button_label": "Choisir ma semelle →",
+        "button_link": "#produits",
         "stat_1_value": "4.8/5",
         "stat_1_label": "2 300 avis",
         "stat_2_value": "48h",
@@ -25,31 +25,11 @@
         "stat_3_label": "Essai chez vous"
       }
     },
-    "feature-grid": {
-      "type": "feature-grid",
-      "blocks": {
-        "feat-1": { "type": "feature", "settings": { "icon": "👟", "title": "Dans toutes vos chaussures", "text": "Une découpe simple aux ciseaux pour s'adapter à n'importe quelle pointure." } },
-        "feat-2": { "type": "feature", "settings": { "icon": "🌡️", "title": "Toute l'année", "text": "Confort au quotidien en toute saison, avec une gamme chauffante pour l'hiver." } },
-        "feat-3": { "type": "feature", "settings": { "icon": "📦", "title": "Livré en 48h", "text": "Expédié depuis la France, dans un colis fin qui passe partout." } },
-        "feat-4": { "type": "feature", "settings": { "icon": "🏆", "title": "Validée par des kinés", "text": "Recommandée par des kinésithérapeutes et podologues pour un soutien quotidien." } }
-      },
-      "block_order": ["feat-1","feat-2","feat-3","feat-4"],
-      "settings": {}
-    },
-    "editorial-panel": {
-      "type": "editorial-panel",
-      "settings": {
-        "heading": "Marcher ne devrait pas faire mal.",
-        "text": "Pas de rendez-vous chez le podologue à attendre trois semaines. Vous commandez en ligne, vous glissez la semelle dans la chaussure, et vous marchez différemment dès le premier jour.",
-        "button_label": "Voir la gamme",
-        "button_link": "/collections/all"
-      }
-    },
     "featured-products": {
       "type": "featured-products",
       "settings": {
         "heading": "Choisissez votre semelle",
-        "text": "Une base de confort pour toute l'année, et une version chauffante pour les mois froids."
+        "text": "Deux modèles. Une seule promesse : marcher sans douleur."
       },
       "blocks": {
         "prod-1": {
@@ -75,14 +55,16 @@
       },
       "block_order": ["prod-1","prod-2"]
     },
-    "comparison-table": {
-      "type": "comparison-table",
-      "settings": {
-        "heading": "Pourquoi choisir Appui ?",
-        "text": "Une semelle qui tient ses promesses, au bon prix, sans attendre.",
-        "button_label": "Essayer Appui — 45 jours sans risque",
-        "button_link": "/collections/all"
-      }
+    "feature-grid": {
+      "type": "feature-grid",
+      "blocks": {
+        "feat-1": { "type": "feature", "settings": { "icon": "👟", "title": "Dans toutes vos chaussures", "text": "Une découpe simple aux ciseaux pour s'adapter à n'importe quelle pointure." } },
+        "feat-2": { "type": "feature", "settings": { "icon": "🌡️", "title": "Résultat dès le 1er jour", "text": "Soutien de voûte plantaire haute densité. Vos pieds le sentent immédiatement." } },
+        "feat-3": { "type": "feature", "settings": { "icon": "🏆", "title": "Validée par des kinés", "text": "Recommandée par des kinésithérapeutes et podologues pour un soutien quotidien." } },
+        "feat-4": { "type": "feature", "settings": { "icon": "📦", "title": "Livré en 48h en France", "text": "Colis fin, expédié depuis la France, livré dans votre boîte aux lettres." } }
+      },
+      "block_order": ["feat-1","feat-2","feat-3","feat-4"],
+      "settings": {}
     },
     "testimonials": {
       "type": "testimonials",
@@ -93,12 +75,21 @@
         "t-4": { "type": "testimonial", "settings": { "rating": 4, "quote": "Enfin une semelle qui ne glisse pas dans la chaussure et qui absorbe vraiment les chocs.", "author": "Thomas, commercial" } }
       },
       "block_order": ["t-1","t-2","t-3","t-4"],
-      "settings": { "heading": "Ils ont retrouvé leur confort" }
+      "settings": { "heading": "Ce que disent nos clients" }
+    },
+    "comparison-table": {
+      "type": "comparison-table",
+      "settings": {
+        "heading": "Pourquoi Appui et pas autre chose ?",
+        "text": "Pharmacie, podologue ou Appui — voici la vérité en chiffres.",
+        "button_label": "Commander maintenant — 45j d'essai offerts",
+        "button_link": "#produits"
+      }
     },
     "faq": {
       "type": "faq",
       "settings": {
-        "heading": "Questions fréquentes",
+        "heading": "Vos questions, nos réponses",
         "text": "Tout ce que vous voulez savoir avant de commander."
       },
       "blocks": {
@@ -125,6 +116,15 @@
         "text": "On est tellement confiants dans nos semelles qu'on vous offre 45 jours pour changer d'avis — sans justification, sans paperasse."
       }
     },
+    "editorial-panel": {
+      "type": "editorial-panel",
+      "settings": {
+        "heading": "Marcher ne devrait pas faire mal.",
+        "text": "Pas de rendez-vous chez le podologue à attendre trois semaines. Vous commandez en ligne, vous glissez la semelle dans la chaussure, et vous marchez différemment dès le premier jour.",
+        "button_label": "Voir la gamme",
+        "button_link": "#produits"
+      }
+    },
     "social-proof": {
       "type": "social-proof",
       "blocks": {
@@ -137,13 +137,13 @@
   },
   "order": [
     "hero",
-    "feature-grid",
-    "editorial-panel",
     "featured-products",
-    "comparison-table",
+    "feature-grid",
     "testimonials",
+    "comparison-table",
     "faq",
     "guarantee",
+    "editorial-panel",
     "social-proof"
   ]
 }
