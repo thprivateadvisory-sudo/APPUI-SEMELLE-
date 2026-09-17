@@ -15,19 +15,71 @@
               {% unless item.product.has_only_default_variant %}
                 <p class="tagline">{{ item.variant.title }}</p>
               {% endunless %}
-              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+              <div class="cart-qty-row">
+                <label class="visually-hidden" for="qty-{{ item.key }}">Quantité</label>
+                <input id="qty-{{ item.key }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="cart-qty-input">
+              </div>
             </div>
-            <span class="price">{{ item.final_line_price | money }}</span>
+            <div class="cart-item-price">
+              {% if item.original_line_price > item.final_line_price %}
+                <span class="price-old">{{ item.original_line_price | money }}</span>
+              {% endif %}
+              <span class="price">{{ item.final_line_price | money }}</span>
+            </div>
           </div>
         {% endfor %}
       </div>
+
+      {% if cart.total_price >= 4000 %}
+        <div class="cart-shipping-notice cart-shipping-notice--free">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M12 19v2"/><path d="M8 19v2"/></svg>
+          Livraison offerte incluse
+        </div>
+      {% else %}
+        {% assign remaining = 4000 | minus: cart.total_price %}
+        <div class="cart-shipping-notice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M12 19v2"/><path d="M8 19v2"/></svg>
+          Plus que <strong>{{ remaining | money }}</strong> pour la livraison offerte
+        </div>
+      {% endif %}
+
       <div class="cart-total">
         <span>Total</span>
         <span class="price">{{ cart.total_price | money }}</span>
       </div>
-      <button type="submit" name="update" class="btn cart-secondary">Mettre à jour</button>
-      <button type="submit" name="checkout" class="btn">Passer commande</button>
+
+      <div class="cart-checkout-block">
+        <button type="submit" name="checkout" class="btn btn--checkout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Passer commande
+        </button>
+        <button type="submit" name="update" class="btn btn--ghost cart-update-btn">Mettre à jour le panier</button>
+      </div>
     {% endform %}
+
+    <div class="cart-reassurance">
+      <div class="cart-reassurance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+        <div>
+          <strong>45 jours pour changer d'avis</strong>
+          <span>Retour gratuit, remboursement complet. Sans justification.</span>
+        </div>
+      </div>
+      <div class="cart-reassurance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <strong>Paiement 100% sécurisé</strong>
+          <span>CB, PayPal, Apple Pay — données chiffrées.</span>
+        </div>
+      </div>
+      <div class="cart-reassurance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M12 19v2"/><path d="M8 19v2"/></svg>
+        <div>
+          <strong>Livraison 48h depuis la France</strong>
+          <span>Expédié aujourd'hui si commande avant 16h.</span>
+        </div>
+      </div>
+    </div>
   {% endif %}
 </section>
 

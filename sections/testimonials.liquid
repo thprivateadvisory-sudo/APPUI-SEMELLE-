@@ -7,9 +7,15 @@
     {% if section.blocks.size > 0 %}
       {% for block in section.blocks %}
         <div class="testimonial-card" {{ block.shopify_attributes }}>
-          <div class="star-badge">
-            {% for i in (1..block.settings.rating) %}★{% endfor %}
-            &nbsp;{{ block.settings.rating }}/5
+          <div class="testimonial-card-header">
+            <div class="star-badge">
+              {% for i in (1..block.settings.rating) %}★{% endfor %}
+              &nbsp;{{ block.settings.rating }}/5
+            </div>
+            <span class="verified-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Achat vérifié
+            </span>
           </div>
           <p>{{ block.settings.quote }}</p>
           <div class="who">— {{ block.settings.author }}</div>
@@ -17,22 +23,46 @@
       {% endfor %}
     {% else %}
       <div class="testimonial-card">
-        <div class="star-badge">★★★★★&nbsp;5/5</div>
+        <div class="testimonial-card-header">
+          <div class="star-badge">★★★★★&nbsp;5/5</div>
+          <span class="verified-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Achat vérifié
+          </span>
+        </div>
         <p>Je travaille debout huit heures par jour, mes pieds ne me font plus mal en fin de service. Je les recommande à toutes mes collègues.</p>
         <div class="who">— Nadia, aide-soignante</div>
       </div>
       <div class="testimonial-card">
-        <div class="star-badge">★★★★★&nbsp;5/5</div>
+        <div class="testimonial-card-header">
+          <div class="star-badge">★★★★★&nbsp;5/5</div>
+          <span class="verified-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Achat vérifié
+          </span>
+        </div>
         <p>Enfin une semelle qui ne glisse pas dans la chaussure et qui absorbe vraiment les chocs. Parfaite pour mes journées de commercial.</p>
         <div class="who">— Thomas, commercial</div>
       </div>
       <div class="testimonial-card">
-        <div class="star-badge">★★★★★&nbsp;5/5</div>
+        <div class="testimonial-card-header">
+          <div class="star-badge">★★★★★&nbsp;5/5</div>
+          <span class="verified-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Achat vérifié
+          </span>
+        </div>
         <p>Installation en deux minutes, découpées à ma pointure sans effort. Je les ai mises dans mes chaussures de bloc opératoire.</p>
         <div class="who">— Julie, infirmière</div>
       </div>
       <div class="testimonial-card">
-        <div class="star-badge">★★★★★&nbsp;5/5</div>
+        <div class="testimonial-card-header">
+          <div class="star-badge">★★★★★&nbsp;5/5</div>
+          <span class="verified-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Achat vérifié
+          </span>
+        </div>
         <p>La version chauffante a changé mes trajets à vélo cet hiver. Je les recommande à tous les livreurs.</p>
         <div class="who">— Karim, livreur</div>
       </div>
