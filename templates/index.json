@@ -277,6 +277,15 @@
       "settings": {
         "heading": "Ils l'ont adopté"
       }
+    },
+    "notre-histoire": {
+      "type": "notre-histoire",
+      "settings": {
+        "heading": "Appui est né d'un constat simple.",
+        "paragraph_1": "En 2007, face à une offre de semelles bas de gamme et inefficaces sur le marché français, nous avons décidé de changer les choses. Car les pieds, c'est la base de tout. Chaque pas, chaque heure debout, chaque douleur ignorée finit par affecter le dos, les genoux, la posture. L'ensemble du corps.",
+        "paragraph_2": "Nous avons passé des années à développer une semelle qui réponde vraiment aux besoins du quotidien. Pas un produit médical inaccessible, pas un accessoire bon marché qui s'effondre en trois mois. Une semelle juste, efficace, accessible.",
+        "paragraph_3": "Aujourd'hui, Appui s'implante dans plusieurs pays européens et devient une référence pour ceux qui veulent prendre soin de leurs pieds sans compromis."
+      }
     }
   },
   "order": [
@@ -288,6 +297,7 @@
     "faq",
     "guarantee",
     "editorial-panel",
-    "social-proof"
+    "social-proof",
+    "notre-histoire"
   ]
 }
