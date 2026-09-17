@@ -57,6 +57,39 @@
       </div>
     {% endform %}
 
+    {% assign upsell_handle = section.settings.upsell_collection | default: 'all' %}
+    {% assign upsell_col = collections[upsell_handle] %}
+    {% if upsell_col.products.size > 0 %}
+      {% assign cart_ids = cart.items | map: 'product_id' %}
+      {% assign upsell_count = 0 %}
+      {% for prod in upsell_col.products %}
+        {% unless cart_ids contains prod.id %}
+          {% if upsell_count == 0 %}
+            <div class="cart-upsell">
+              <p class="cart-upsell-title">Souvent achetés ensemble</p>
+              <div class="cart-upsell-grid">
+          {% endif %}
+          {% if upsell_count < 2 %}
+            <div class="cart-upsell-card">
+              {% if prod.featured_image %}
+                <img src="{{ prod.featured_image | image_url: width: 120 }}" alt="{{ prod.title | escape }}" loading="lazy" class="cart-upsell-img">
+              {% endif %}
+              <div class="cart-upsell-info">
+                <strong>{{ prod.title }}</strong>
+                <span>{{ prod.price | money }}</span>
+              </div>
+              <a href="{{ prod.url }}" class="btn cart-upsell-btn">Voir</a>
+            </div>
+            {% assign upsell_count = upsell_count | plus: 1 %}
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+      {% if upsell_count > 0 %}
+              </div>
+            </div>
+      {% endif %}
+    {% endif %}
+
     <div class="cart-reassurance">
       <div class="cart-reassurance-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
@@ -86,6 +119,8 @@
 {% schema %}
 {
   "name": "Panier",
-  "settings": []
+  "settings": [
+    { "type": "collection", "id": "upsell_collection", "label": "Collection upsell (\"Souvent achetés ensemble\")" }
+  ]
 }
 {% endschema %}

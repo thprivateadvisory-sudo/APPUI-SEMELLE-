@@ -41,6 +41,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Viewer count — social urgency on product page
+  var viewerEl = document.getElementById('viewer-count');
+  var viewerText = document.getElementById('viewer-count-text');
+  if (viewerEl && viewerText) {
+    var viewerCount = Math.floor(Math.random() * 14) + 8; // 8–21
+    function updateViewer() {
+      viewerText.textContent = viewerCount + ' personnes regardent ce produit en ce moment';
+    }
+    updateViewer();
+    setInterval(function () {
+      var delta = Math.random() < 0.5 ? 1 : -1;
+      viewerCount = Math.max(5, Math.min(28, viewerCount + delta));
+      viewerEl.classList.add('viewer-count--update');
+      setTimeout(function () {
+        updateViewer();
+        viewerEl.classList.remove('viewer-count--update');
+      }, 200);
+    }, Math.floor(Math.random() * 12000) + 14000); // toutes les 14–26s
+  }
+
   // Thumbnail image switcher on product page
   var thumbs = document.querySelectorAll('.product-thumbs img');
   var mainImg = document.querySelector('.product-page-media > img');
