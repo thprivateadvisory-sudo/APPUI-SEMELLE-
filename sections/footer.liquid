@@ -1,7 +1,16 @@
 <footer class="site-footer">
   <div class="footer-inner">
-    <div>
-      <span class="brand">{{ section.settings.logo_text | default: shop.name }}</span>
+    <div class="footer-brand">
+      <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        <img
+          src="{{ 'logo.png' | asset_url }}"
+          alt="{{ shop.name }}"
+          class="brand__logo brand__logo--footer"
+          width="140"
+          height="93"
+          loading="lazy"
+        >
+      </a>
     </div>
     {% for block in section.blocks %}
       <div class="foot-col">
@@ -22,12 +31,6 @@
 {
   "name": "Pied de page",
   "settings": [
-    {
-      "type": "text",
-      "id": "logo_text",
-      "label": "Texte du logo",
-      "default": "Appui"
-    },
     {
       "type": "text",
       "id": "tagline",
