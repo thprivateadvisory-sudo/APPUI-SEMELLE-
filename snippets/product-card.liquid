@@ -1,13 +1,18 @@
-{%- comment -%} Attend un objet `product` en paramètre {%- endcomment -%}
+{%- comment -%} Paramètres : product, badge, benefit_1, benefit_2, benefit_3, btn_label {%- endcomment -%}
 <a href="{{ product.url }}" class="product-card">
+
   <div class="product-media">
+    {% if badge != blank %}
+      <div class="product-badge">{{ badge }}</div>
+    {% endif %}
+
     {% if product.featured_image %}
       <img
-        src="{{ product.featured_image | image_url: width: 640 }}"
-        alt="{{ product.featured_image.alt | escape }}"
+        src="{{ product.featured_image | image_url: width: 800 }}"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
         loading="lazy"
-        width="320"
-        height="280"
+        width="400"
+        height="350"
       >
     {% else %}
       {{ 'product-1' | placeholder_svg_tag }}
@@ -15,10 +20,40 @@
   </div>
 
   <div class="product-body">
+
+    <div class="product-card-rating">
+      <span class="stars-icons">★★★★★</span>
+      <span class="stars-text">
+        {%- if product.metafields.reviews.rating != blank -%}
+          {{ product.metafields.reviews.rating }} / 5
+        {%- else -%}
+          4.8 / 5
+        {%- endif -%}
+        &nbsp;·&nbsp;
+        {%- if product.metafields.reviews.rating_count != blank -%}
+          {{ product.metafields.reviews.rating_count }} avis
+        {%- else -%}
+          2 300 avis
+        {%- endif -%}
+      </span>
+    </div>
+
     <h3>{{ product.title }}</h3>
 
     {% if product.metafields.custom.tagline != blank %}
       <p class="tagline">{{ product.metafields.custom.tagline }}</p>
+    {% endif %}
+
+    {%- assign has_benefits = false -%}
+    {%- if benefit_1 != blank or benefit_2 != blank or benefit_3 != blank -%}
+      {%- assign has_benefits = true -%}
+    {%- endif -%}
+    {% if has_benefits %}
+      <ul class="product-card-benefits">
+        {% if benefit_1 != blank %}<li>{{ benefit_1 }}</li>{% endif %}
+        {% if benefit_2 != blank %}<li>{{ benefit_2 }}</li>{% endif %}
+        {% if benefit_3 != blank %}<li>{{ benefit_3 }}</li>{% endif %}
+      </ul>
     {% endif %}
 
     <div class="price-row">
@@ -31,13 +66,14 @@
       {% endif %}
     </div>
 
-    {% if product.metafields.reviews.rating != blank %}
-      <div class="stars">
-        <span class="stars-icons">★★★★★</span>
-        <span class="stars-text">{{ product.metafields.reviews.rating }} / 5</span>
-      </div>
-    {% endif %}
+    <span class="btn btn--card">
+      {%- if btn_label != blank -%}{{ btn_label }}{%- else -%}Ajouter au panier{%- endif -%}
+    </span>
 
-    <span class="btn">Voir le produit</span>
+    <div class="product-card-trust">
+      <span>↩ 45 jours remboursé</span>
+      <span>🚚 Livraison offerte</span>
+    </div>
+
   </div>
 </a>

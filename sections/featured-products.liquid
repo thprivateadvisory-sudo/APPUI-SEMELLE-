@@ -5,12 +5,39 @@
       <p>{{ section.settings.text }}</p>
     {% endif %}
   </div>
+
   <div class="product-grid">
     {% for block in section.blocks %}
       {% if block.settings.product != blank %}
-        {% render 'product-card', product: block.settings.product %}
+        {% render 'product-card',
+          product:   block.settings.product,
+          badge:     block.settings.badge,
+          benefit_1: block.settings.benefit_1,
+          benefit_2: block.settings.benefit_2,
+          benefit_3: block.settings.benefit_3,
+          btn_label: block.settings.btn_label
+        %}
       {% endif %}
     {% endfor %}
+  </div>
+
+  <div class="products-trust-strip">
+    <div class="products-trust-item">
+      <span class="products-trust-icon">↩</span>
+      <span><strong>45 jours</strong> satisfait ou remboursé</span>
+    </div>
+    <div class="products-trust-item">
+      <span class="products-trust-icon">🚚</span>
+      <span><strong>Livraison offerte</strong> dès 40€ · 48h</span>
+    </div>
+    <div class="products-trust-item">
+      <span class="products-trust-icon">🔒</span>
+      <span>Paiement <strong>100% sécurisé</strong></span>
+    </div>
+    <div class="products-trust-item">
+      <span class="products-trust-icon">🏆</span>
+      <span>Validé par des <strong>kinés</strong></span>
+    </div>
   </div>
 </section>
 
@@ -18,15 +45,20 @@
 {
   "name": "Produits en avant",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Deux semelles, une seule promesse" },
-    { "type": "textarea", "id": "text", "label": "Texte", "default": "Une base de confort pour toute l'année, et une version chauffante pour les mois froids." }
+    { "type": "text",     "id": "heading", "label": "Titre",      "default": "Choisissez votre semelle" },
+    { "type": "textarea", "id": "text",    "label": "Sous-titre", "default": "Une base de confort pour toute l'année, et une version chauffante pour les mois froids." }
   ],
   "blocks": [
     {
       "type": "product",
       "name": "Produit",
       "settings": [
-        { "type": "product", "id": "product", "label": "Produit" }
+        { "type": "product",  "id": "product",   "label": "Produit" },
+        { "type": "text",     "id": "badge",     "label": "Badge (ex : 🔥 Bestseller)" },
+        { "type": "text",     "id": "benefit_1", "label": "Avantage 1" },
+        { "type": "text",     "id": "benefit_2", "label": "Avantage 2" },
+        { "type": "text",     "id": "benefit_3", "label": "Avantage 3" },
+        { "type": "text",     "id": "btn_label", "label": "Texte du bouton", "default": "Ajouter au panier" }
       ]
     }
   ],

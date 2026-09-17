@@ -47,7 +47,33 @@
     },
     "featured-products": {
       "type": "featured-products",
-      "settings": { "heading": "Nos semelles" }
+      "settings": {
+        "heading": "Choisissez votre semelle",
+        "text": "Une base de confort pour toute l'année, et une version chauffante pour les mois froids."
+      },
+      "blocks": {
+        "prod-1": {
+          "type": "product",
+          "settings": {
+            "badge": "🔥 Bestseller",
+            "benefit_1": "Soulagement dès le premier jour",
+            "benefit_2": "Compatible toutes chaussures",
+            "benefit_3": "Durée de vie +18 mois",
+            "btn_label": "Ajouter au panier"
+          }
+        },
+        "prod-2": {
+          "type": "product",
+          "settings": {
+            "badge": "❄️ Édition hivernale",
+            "benefit_1": "Chaleur jusqu'à 8h — rechargeable USB",
+            "benefit_2": "Idéale sport, outdoor, métiers en extérieur",
+            "benefit_3": "Même confort orthopédique qu'Appui Classic",
+            "btn_label": "Ajouter au panier"
+          }
+        }
+      },
+      "block_order": ["prod-1","prod-2"]
     },
     "comparison-table": {
       "type": "comparison-table",
